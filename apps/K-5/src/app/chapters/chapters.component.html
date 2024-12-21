@@ -1,0 +1,14 @@
+<!-- chapters-page.component.html -->
+<div *ngIf="selectedCourse$ | async as course">
+    <h2>{{ course.name }}</h2>
+    <div *ngFor="let chapterId of course.chapters">
+      <div *ngIf="selectedChapter$ | async as chapter">
+        <h3>{{ chapter.name }}</h3>
+        <div *ngFor="let lessonId of chapter.lessons">
+          <!-- <div>{{ getLessonName(lessonId) }}</div>  -->
+          <!-- <button (click)="onCompleteLesson(userId, lessonId)">Complete Lesson</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  
