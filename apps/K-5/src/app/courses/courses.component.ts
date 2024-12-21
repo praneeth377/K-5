@@ -1,38 +1,37 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { Store,  } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { selectCourse, setRecentChapter } from '../store/actions';
-import { AppState, Course } from '../models/models.component';
-import { selectChapterById, selectCourses } from '../store/selectors';
+import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 
+import { AppState, Course } from '../models/models.component';
+import { selectCourse, setRecentChapter } from '../store/actions';
+import { selectChapterById, selectCourses } from '../store/selectors';
 
 @Component({
   selector: 'app-courses',
   standalone: true,
-  imports: [CommonModule,
-   
-  ],
+  imports: [CommonModule],
   templateUrl: './courses.component.html',
   styleUrl: './courses.component.css',
 })
 export class CoursesComponent implements OnInit {
   courses$?:Observable<Course[]>
 
- 
-  constructor(private store: Store<AppState>) {}
+  constructor(private store: Store<AppState>) {
+    this.courses$ = this.store.select(selectCourses);
+  }
+
   ngOnInit(): void {
     console.log("hello")
-    this.courses$ = this.store.select(selectCourses);
-    console.log(this.courses$,"courses")
-    
-    throw new Error('Method not implemented.');
+    // console.log(this.courses$,"courses")
   }
+
   onSelectCourse(courseId: number) {
     this.store.dispatch(selectCourse({ courseId }));
     this.store.dispatch(setRecentChapter({ chapterId: courseId })); // Optional: Update recent chapter
   }
+
   getChapterName(chapterId: number) {
     // Use the selector to get the chapter by its ID
     this.store.select(selectChapterById(chapterId)).subscribe(chapter => {
@@ -42,6 +41,4 @@ export class CoursesComponent implements OnInit {
       return 'Chapter not found'; // In case the chapter ID is not found
     });
   }
-
 }
-
