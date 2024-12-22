@@ -4,7 +4,8 @@
       <h3>{{ course.name }}</h3>
       <p>{{ course.description }}</p>
       <div *ngFor="let chapterId of course.chapters">
-        <div>{{ getChapterName(chapterId) }}</div> 
+        <!-- <div>{{ getChapterName(chapterId) }}</div> 
+         -->
       </div>
       <button (click)="onSelectCourse(course.id)">Go to Course</button>
     </div>
