@@ -24,9 +24,9 @@ export class ChaptersComponent implements OnInit{
     
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const courseId = +this.route.snapshot.paramMap.get('courseId')!;
-    // this.store.dispatch(selectCourse({ courseId }));
-    // this.selectedCourse$ = this.store.select(selectSelectedCourse);
-    // this.selectedChapter$ = this.store.select(selectSelectedChapter);
+    this.store.dispatch(selectCourse({ courseId }));
+    this.selectedCourse$ = this.store.select(selectSelectedCourse);
+    this.selectedChapter$ = this.store.select(selectSelectedChapter);
 
   }
 
