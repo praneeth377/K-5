@@ -12,7 +12,6 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 import { appRoutes } from './app.routes';
 import { AuthEffects } from './store/effects/login.effect';
-import { appReducer } from './store/reducers';
 import { authReducer } from './store/reducers/login.reducer';
 
 export const appConfig: ApplicationConfig = {

@@ -2,11 +2,6 @@ import { Observable } from 'rxjs';
 
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-
-import { AppState, Course } from '../models/models.component';
-import { selectCourse, setRecentChapter } from '../store/actions';
-import { selectChapterById, selectCourses } from '../store/selectors';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,7 +13,6 @@ import { Router } from '@angular/router';
 })
 export class CoursesComponent implements OnInit {
   selectedCourseId: string | null = null;
-  courses$?:Observable<Course[]>
   courses= [
     {
       id: '1',
@@ -52,31 +46,27 @@ export class CoursesComponent implements OnInit {
     },
   ];
 
-  constructor(private store: Store<AppState>,private router:Router) {
-    this.courses$ = this.store.select(selectCourses);
+  constructor(private router:Router) {
+  
   }
 
   ngOnInit(): void {
     console.log("hello")
-    this.courses$?.subscribe(value=>{
-      console.log("value",value)
-    })
   }
 
   onSelectCourse(courseId: number) {
-    this.store.dispatch(selectCourse({ courseId }));
-    this.store.dispatch(setRecentChapter({ chapterId: courseId })); // Optional: Update recent chapter
+    console.log(courseId)
   }
 
-  getChapterName(chapterId: number) {
-    // Use the selector to get the chapter by its ID
-    this.store.select(selectChapterById(chapterId)).subscribe(chapter => {
-      if (chapter) {
-        return chapter.name; // Return the chapter name
-      }
-      return 'Chapter not found'; // In case the chapter ID is not found
-    });
-  }
+  // getChapterName(chapterId: number) {
+   
+  //   this.store.select(selectChapterById(chapterId)).subscribe(chapter => {
+  //     if (chapter) {
+  //       return chapter.name; 
+  //     }
+  //     return 'Chapter not found';
+  //   });
+  // }
   toggleCourse(courseId: string): void {
     if (this.selectedCourseId === courseId) {
       this.selectedCourseId = null; // Close the course if already selected
