@@ -15,7 +15,7 @@ import { userSelector } from '../store/selectors/login.selector';
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
-  constructor(private store: Store<{}>, private router: Router) {}
+  constructor(private store: Store, private router: Router) {}
 
   userCredentials: any = {
     email: '',

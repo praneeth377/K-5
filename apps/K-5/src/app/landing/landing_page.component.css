@@ -18,3 +18,24 @@
     transition: background 0.3s ease, transform 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   }
+
+  .grid-container {
+    display: grid;
+    place-items: center;   /* Centers content both horizontally and vertically */
+    height: 25vh;         /* Make the container take up full viewport height */
+  }
+  
+  /* Profile picture styling */
+  .profile-picture {
+    width: 150px;             /* Adjust size as needed */
+    height: 150px;
+    border-radius: 50%;       /* Make the image round */
+        /* Ensure the image covers the container */
+  }
+
+  /* body {
+    height: 80vh;  
+    margin: 0;     
+    background: linear-gradient(to right, #ff7e5f, #feb47b) !important; 
+  }
+ */
