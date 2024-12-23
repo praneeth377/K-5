@@ -1,12 +1,17 @@
+import { Observable } from 'rxjs';
+
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { Chapter, Course } from '../models/models.component';
-import { completeLesson, selectCourse } from '../store/actions';
-import { selectSelectedChapter, selectSelectedCourse } from '../store/selectors';
 
+import { Chapter, Course } from '../models/models.component';
+
+// import { completeLesson, selectCourse } from '../store/actions';
+// import {
+// 	selectSelectedChapter,
+// 	selectSelectedCourse,
+// } from '../store/selectors';
 
 @Component({
   selector: 'app-chapters',
@@ -18,10 +23,10 @@ import { selectSelectedChapter, selectSelectedCourse } from '../store/selectors'
 export class ChaptersComponent implements OnInit{
   selectedCourse$?:Observable<Course | null>
   selectedChapter$?:Observable<Chapter| null>
- 
+
   constructor(private store: Store, private route: ActivatedRoute){}
   ngOnInit(): void {
-    
+
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const courseId = +this.route.snapshot.paramMap.get('courseId')!;
     // this.store.dispatch(selectCourse({ courseId }));
@@ -30,8 +35,8 @@ export class ChaptersComponent implements OnInit{
 
   }
 
-  onCompleteLesson(userId: number, lessonId: number) {
-    this.store.dispatch(completeLesson({ userId, lessonId }));
-  }
+  // onCompleteLesson(userId: number, lessonId: number) {
+  //   this.store.dispatch(completeLesson({ userId, lessonId }));
+  // }
 
 }
