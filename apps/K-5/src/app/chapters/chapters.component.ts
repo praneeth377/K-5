@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 
 import { Chapter, Course } from '../models/models.component';
+import { chapterSelector } from '../store/selectors/chapter.selector';
 
 // import { completeLesson, selectCourse } from '../store/actions';
 // import {
@@ -39,13 +40,10 @@ export class ChaptersComponent implements OnInit{
 
   ngOnInit(): void {
     console.log("chapters")
-    
-
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    // const courseId = +this.route.snapshot.paramMap.get('courseId')!;
-    // this.store.dispatch(selectCourse({ courseId }));
-    // this.selectedCourse$ = this.store.select(selectSelectedCourse);
-    // this.selectedChapter$ = this.store.select(selectSelectedChapter);
+    this.store.select(chapterSelector).subscribe(data=>{
+      // this.lessons=data
+      console.log(data)
+    })
 
   }
   toggleCompletion(lessonId: string|null): void {
