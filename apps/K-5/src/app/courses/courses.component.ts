@@ -3,6 +3,9 @@ import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { Store } from '@ngrx/store';
+import { courseSelector } from '../store/selectors/course.selector';
 
 @Component({
   selector: 'app-courses',
@@ -46,12 +49,17 @@ export class CoursesComponent implements OnInit {
     },
   ];
 
-  constructor(private router:Router) {
+  constructor(private router:Router,private store:Store) {
   
   }
 
   ngOnInit(): void {
     console.log("hello")
+    this.store.select(courseSelector).subscribe(data=>{
+      console.log(data)
+    })
+    
+
   }
 
   onSelectCourse(courseId: number) {
