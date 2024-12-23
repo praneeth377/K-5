@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @Component({
   selector: 'app-landing-page',

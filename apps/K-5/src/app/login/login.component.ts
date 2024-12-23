@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterOutlet } from '@angular/router';
 import { Store } from '@ngrx/store';
 
+import { chapterAction } from '../store/actions/chapter.action';
+import { courseAction } from '../store/actions/course.action';
 import { authActions } from '../store/actions/login.action';
 import { userSelector } from '../store/selectors/login.selector';
 
@@ -15,7 +17,7 @@ import { userSelector } from '../store/selectors/login.selector';
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
-  constructor(private store: Store<{}>, private router: Router) {}
+  constructor(private store: Store, private router: Router) {}
 
   userCredentials: any = {
     email: '',
@@ -32,6 +34,8 @@ export class LoginComponent {
     this.store.select(userSelector).subscribe((authState) => {
       if (authState.user) {
         this.router.navigate(['/landing']);
+        this.store.dispatch(courseAction.loadCourses())
+        this.store.dispatch(chapterAction.loadChapters())
       }
     });
   }

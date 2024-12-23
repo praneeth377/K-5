@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
+import { User } from '../../models/models.component';
 import { authActions } from '../actions/login.action';
 
 @Injectable()
@@ -15,7 +16,7 @@ export class AuthEffects {
       ofType(authActions.login),
       switchMap(({ email, password }) =>
         this.http
-          .get<any[]>(`http://localhost:3000/users?email=${email}&password=${password}`)
+          .get<User[]>(`http://localhost:3000/users?email=${email}&password=${password}`)
           .pipe(
             map((users) => {
               if (users.length > 0) {
