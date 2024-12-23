@@ -1,9 +1,10 @@
 import { createReducer, on } from '@ngrx/store';
 
+import { User } from '../../models/models.component';
 import { authActions } from '../actions/login.action';
 
 export interface AuthState {
-  user: any | null;
+  user: User | null;
   error: string | null;
 }
 
