@@ -1,3 +1,4 @@
+import { provideHttpClient } from '@angular/common/http';
 import {
 	ApplicationConfig,
 	isDevMode,
@@ -10,15 +11,18 @@ import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 import { appRoutes } from './app.routes';
+import { AuthEffects } from './store/effects/login.effect';
 import { appReducer } from './store/reducers';
+import { authReducer } from './store/reducers/login.reducer';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideClientHydration(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(appRoutes),
-    provideStore({app:appReducer}),
-    provideEffects(),
+    provideHttpClient(),
+    provideStore({/*app: appReducer,*/ auth: authReducer}),
+    provideEffects([AuthEffects]),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
 ],
 };
