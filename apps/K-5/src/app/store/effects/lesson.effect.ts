@@ -36,7 +36,7 @@ export class LessonEffects {
             const updatedUser = {
               ...user,
               totalPoints: user.totalPoints + points,
-              completedLessons: [...user.completedLessons, lessonId],
+              completedLessons: [...user.completedLessons, lessonId*1],
             };
 
             return this.http
