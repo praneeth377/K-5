@@ -6,6 +6,7 @@ export interface User {
   avatar: string;
   totalPoints: number;
   completedLessons: number[];
+  lastViewedChapterId: number;
   progress: Progress;
 }
 
@@ -36,7 +37,7 @@ export interface Lesson {
   xpPoints: number;
   difficulty: string;
   chapterId: number;
-  isCompleted: boolean;
+  // isCompleted: boolean;
 }
 
 export interface AppState {

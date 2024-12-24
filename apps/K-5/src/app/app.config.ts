@@ -13,9 +13,11 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { appRoutes } from './app.routes';
 import { ChapterEffects } from './store/effects/chapter.effect';
 import { CourseEffects } from './store/effects/course.effect';
+import { LessonEffects } from './store/effects/lesson.effect';
 import { AuthEffects } from './store/effects/login.effect';
 import { chapterReducer } from './store/reducers/chapter.reducer';
 import { courseReducer } from './store/reducers/course.reducer';
+import { lessonReducer } from './store/reducers/lesson.reducer';
 import { authReducer } from './store/reducers/login.reducer';
 
 export const appConfig: ApplicationConfig = {
@@ -24,8 +26,8 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(appRoutes),
     provideHttpClient(),
-    provideStore({auth: authReducer, course: courseReducer, chapter: chapterReducer}),
-    provideEffects([AuthEffects, CourseEffects, ChapterEffects]),
+    provideStore({auth: authReducer, course: courseReducer, chapter: chapterReducer, lesson: lessonReducer}),
+    provideEffects([AuthEffects, CourseEffects, ChapterEffects, LessonEffects]),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
 ],
 };
