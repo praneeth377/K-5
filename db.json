@@ -8,6 +8,7 @@
       "avatar": "https://static.vecteezy.com/system/resources/previews/014/388/556/non_2x/avatar-portrait-of-a-kid-child-caucasian-boy-in-round-blue-frame-illustration-in-cartoon-flat-style-vector.jpg",
       "totalPoints": 4,
       "completedLessons": [101, 103],
+      "lastViewedChapterId": 0,
       "progress": {
         "courseId": 1,
         "percentage": 50
@@ -21,6 +22,7 @@
       "avatar": "https://www.icon0.com/free/static2/preview2/stock-photo-little-girl-faces-children-avatar-people-icon-character-cartoon-32465.jpg",
       "totalPoints": 0,
       "completedLessons": [],
+      "lastViewedChapterId": 0,
       "progress": {
         "courseId": 1,
         "percentage": 0
@@ -78,8 +80,7 @@
       "description": "Introduction to algebra.",
       "xpPoints": 2,
       "difficulty": "Easy",
-      "chapterId": 1,
-      "isCompleted": true
+      "chapterId": 1
     },
     {
       "id": 102,
@@ -87,8 +88,7 @@
       "description": "Learn about quadratic equations and beyond.",
       "xpPoints": 3,
       "difficulty": "Medium",
-      "chapterId": 1,
-      "isCompleted": false
+      "chapterId": 1
     },
     {
       "id": 103,
@@ -96,8 +96,7 @@
       "description": "Understanding sine, cosine, and tangent.",
       "xpPoints": 2,
       "difficulty": "Easy",
-      "chapterId": 2,
-      "isCompleted": true
+      "chapterId": 2
     },
     {
       "id": 104,
@@ -105,8 +104,7 @@
       "description": "Solving equations involving trigonometric functions.",
       "xpPoints": 4,
       "difficulty": "Hard",
-      "chapterId": 2,
-      "isCompleted": false
+      "chapterId": 2
     },
     {
       "id": 201,
@@ -114,8 +112,7 @@
       "description": "An overview of Newton's laws of motion.",
       "xpPoints": 3,
       "difficulty": "Medium",
-      "chapterId": 3,
-      "isCompleted": false
+      "chapterId": 3
     },
     {
       "id": 202,
@@ -123,8 +120,7 @@
       "description": "Study the effects of friction in motion.",
       "xpPoints": 4,
       "difficulty": "Hard",
-      "chapterId": 3,
-      "isCompleted": false
+      "chapterId": 3
     },
     {
       "id": 203,
@@ -132,8 +128,7 @@
       "description": "Learn the basics of heat transfer mechanisms.",
       "xpPoints": 3,
       "difficulty": "Medium",
-      "chapterId": 4,
-      "isCompleted": false
+      "chapterId": 4
     },
     {
       "id": 204,
@@ -141,8 +136,7 @@
       "description": "Explore the laws governing thermodynamics.",
       "xpPoints": 4,
       "difficulty": "Hard",
-      "chapterId": 4,
-      "isCompleted": false
+      "chapterId": 4
     }
   ]
 }
