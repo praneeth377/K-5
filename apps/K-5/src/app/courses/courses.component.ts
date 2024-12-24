@@ -1,21 +1,22 @@
 import { Observable } from 'rxjs';
 
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { courseSelector } from '../store/selectors/course.selector';
-import { chapterSelector } from '../store/selectors/chapter.selector';
+
 import { Chapter, Course, User } from '../models/models.component';
 import { lessonActions } from '../store/actions/lesson.action';
 import { lastViewedChapterActions } from '../store/actions/login.action';
+import { chapterSelector } from '../store/selectors/chapter.selector';
+import { courseSelector } from '../store/selectors/course.selector';
 import { selectUser } from '../store/selectors/login.selector';
 
 @Component({
   selector: 'app-courses',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterOutlet],
   templateUrl: './courses.component.html',
   styleUrl: './courses.component.css',
 })
@@ -39,10 +40,11 @@ user:User ={
   }
 }
   constructor(private router:Router,private store:Store) {
-  
+
   }
 
   ngOnInit(): void {
+    console.log(this.router.url)
     this.store.select(courseSelector).subscribe(data=>{
       this.courses=data
       console.log(this.courses,"courses")
@@ -52,11 +54,11 @@ user:User ={
       this.chapters=data
     })
     this.store.select(selectUser).subscribe(data=>{
-     
+
       this.user=data
     })
-  
-    
+
+
 
   }
   getChaptersForCourse(id: number) {
@@ -65,25 +67,26 @@ user:User ={
 
 
   // getChapterName(chapterId: number) {
-   
+
   //   this.store.select(selectChapterById(chapterId)).subscribe(chapter => {
   //     if (chapter) {
-  //       return chapter.name; 
+  //       return chapter.name;
   //     }
   //     return 'Chapter not found';
   //   });
   // }
   toggleCourse(courseId: number): void {
     if (this.selectedCourseId === courseId) {
-      this.selectedCourseId = null; 
+      this.selectedCourseId = null;
     } else {
-      this.selectedCourseId = courseId; 
+      this.selectedCourseId = courseId;
     }
   }
   navigateChapterpage(id:string){
-    this.store.dispatch(lessonActions.fetchLessons({chapterId:+id }))
-    // this.store.dispatch(lastViewedChapterActions.updateLastViewedChapter({userId:this.user.id , lastViewedChapterId:+id }))
     this.router.navigate([`courses/:${id}/chapters`])
+    console.log(this.router.url)
+    this.store.dispatch(lessonActions.fetchLessons({chapterId:+id }))
+    this.store.dispatch(lastViewedChapterActions.updateLastViewedChapter({userId:this.user.id , lastViewedChapterId:+id }))
   }
-  
+
 }

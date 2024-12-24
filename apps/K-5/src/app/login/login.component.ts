@@ -31,13 +31,9 @@ export class LoginComponent {
   onSubmit() {
     const { email, password } = this.userCredentials;
     this.store.dispatch(authActions.login({ email, password }));
-    this.store.select(userSelector).subscribe((authState) => {
-      if (authState.user) {
-        this.router.navigate(['/landing']);
-        this.store.dispatch(courseAction.loadCourses())
-        this.store.dispatch(chapterAction.loadChapters())
-      }
-    });
+    this.router.navigate(['/landing']);
+    this.store.dispatch(courseAction.loadCourses())
+    this.store.dispatch(chapterAction.loadChapters())
   }
 
 }
