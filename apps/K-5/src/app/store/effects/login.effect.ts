@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
 import { User } from '../../models/models.component';
-import { authActions } from '../actions/login.action';
+import { authActions, lastViewedChapterActions } from '../actions/login.action';
 
 @Injectable()
 export class AuthEffects {
@@ -26,6 +26,28 @@ export class AuthEffects {
               }
             }),
             catchError(() => of(authActions.loginFailure({ error: 'Server error' })))
+          )
+      )
+    )
+  );
+
+  updateLastViewedChapter$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(lastViewedChapterActions.updateLastViewedChapter),
+      switchMap(({ userId, lastViewedChapterId }) =>
+        this.http
+          .patch(`http://localhost:3000/users/${userId}`, { lastViewedChapterId })
+          .pipe(
+            map(() =>
+              lastViewedChapterActions.updateLastViewedChapterSuccess({ lastViewedChapterId })
+            ),
+            catchError(() =>
+              of(
+                lastViewedChapterActions.updateLastViewedChapterFailure({
+                  error: 'Failed to update last viewed chapter',
+                })
+              )
+            )
           )
       )
     )

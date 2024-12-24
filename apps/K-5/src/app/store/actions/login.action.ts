@@ -10,3 +10,14 @@ export const authActions = createActionGroup({
     'Login Failure': props<{ error: string }>(),
   },
 });
+
+export const lastViewedChapterActions = createActionGroup({
+  source: 'Last Chapter Viewed API',
+  events: {
+    'Update Last Viewed Chapter': props<{ userId: number; lastViewedChapterId: number }>(),
+    'Update Last Viewed Chapter Success': props<{ lastViewedChapterId: number }>(),
+    'Update Last Viewed Chapter Failure': props<{ error: string }>(),
+  },
+});
+
+// this.store.dispatch(lastViewedChapterActions.updateLastViewedChapter({userId: , lastViewedChpaterId: }))
