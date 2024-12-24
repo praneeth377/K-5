@@ -3,14 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import { CoursesComponent } from '../courses/courses.component';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { userSelector } from '../store/selectors/login.selector';
 
 @Component({
   selector: 'app-landing-page',
   standalone: true,
-  imports: [CommonModule, MatProgressBarModule, MatButtonModule, CoursesComponent],
+  imports: [CommonModule, MatButtonModule, CoursesComponent, RouterLink],
   templateUrl: './landing_page.component.html',
   styleUrl: './landing_page.component.css',
 })
@@ -18,6 +18,7 @@ export class LandingPageComponent implements OnInit{
   userName!: any;
   points!: any;
   avatars!: any;
+  isSidenavOpen = false;
   //userName$ = Observable<any>;
 
   constructor(private router:Router, private store: Store){
@@ -35,7 +36,13 @@ export class LandingPageComponent implements OnInit{
         //this.userName$ = this.userName;
   }
   
-  buttonClick():void {
-    this.router.navigate(['/courses']);
+  
+
+  openNav() {
+    this.isSidenavOpen = true;
+  }
+
+  closeNav() {
+    this.isSidenavOpen = false;
   }
 }
