@@ -63,11 +63,9 @@
   </div>
       </nav>
       
-  <div
-  class="relative flex items-center justify-center bg-cover bg-center"
+<div class="relative flex items-center justify-center bg-cover bg-center"
   style="background: linear-gradient(45deg, #44809c, #997ca9);
-  height: 89vh;"
->
+  height: 89vh;">
 
 
 <div class="sidenav" [class.open]="isSidenavOpen">
@@ -88,9 +86,13 @@
       </div>
       Welcome {{ userName }}, Let's get started
     </div>
-    <!-- <button class="button" mat-stroked-button style="margin-left: 42%;" (click)="buttonClick()">Courses</button> -->
+    <div>
+      <a (click)="onClick()" class="center-link">Click here to view Last Visited Chapter</a>
     </div>
     
+    <!-- <button class="button" mat-stroked-button style="margin-left: 42%;" (click)="buttonClick()">Courses</button> -->
+    </div>
+   
 
     </div>
 
