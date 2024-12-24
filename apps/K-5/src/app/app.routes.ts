@@ -10,5 +10,4 @@ export const appRoutes: Route[] = [
     { path: 'landing', component: LandingPageComponent },
     { path: 'courses', component: CoursesComponent },
     { path: 'courses/:courseId/chapters', component: ChaptersComponent },
-    { path: 'landing', component: LandingPageComponent}
 ];

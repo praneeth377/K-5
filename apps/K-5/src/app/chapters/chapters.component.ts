@@ -5,8 +5,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 
-import { Chapter, Course } from '../models/models.component';
+import { Chapter, Course, Lesson, User } from '../models/models.component';
 import { chapterSelector } from '../store/selectors/chapter.selector';
+import { lessonActions } from '../store/actions/lesson.action';
+import { selectLessons } from '../store/selectors/lesson.selector';
+import { selectUser } from '../store/selectors/login.selector';
 
 // import { completeLesson, selectCourse } from '../store/actions';
 // import {
@@ -22,35 +25,51 @@ import { chapterSelector } from '../store/selectors/chapter.selector';
   styleUrl: './chapters.component.css',
 })
 export class ChaptersComponent implements OnInit{
-  selectedCourse$?:Observable<Course | null>
-  selectedChapter$?:Observable<Chapter| null>
-  completed: undefined
-  
-  lessons= [
-    { id: '1', title: 'Lesson 1: Introduction to Angular', content: 'This is the content for Lesson 1.', completed: true },
-    { id: '2', title: 'Lesson 2: Angular Components', content: 'This is the content for Lesson 2.', completed: false },
-    { id: '3', title: 'Lesson 3: Angular Services', content: 'This is the content for Lesson 3.', completed: false },
-    { id: '4', title: 'Lesson 4: Angular Routing', content: 'This is the content for Lesson 4.', completed: false }
-  ]
-  selectedLessonId: string | null = null;
-  selectedLesson:undefined
- 
+lessons:Lesson[]=[]
+selectedLessonId = 0
+selectedChapterId=0
+user:User={
+   id: 0,
+   name: '',
+   email: '',
+   password: '',
+   avatar: '',
+   totalPoints: 0,
+   completedLessons: [],
+   lastViewedChapterId: 0,
+   progress: {
+     courseId: 0,
+     percentage: 0
+   }
+ }
 
   constructor(private store: Store, private route: ActivatedRoute){}
 
   ngOnInit(): void {
-    console.log("chapters")
-    this.store.select(chapterSelector).subscribe(data=>{
-      // this.lessons=data
-      console.log(data)
+    this.route.paramMap.subscribe(params => {
+      this.selectedChapterId = +params.get('courseId')!; // The 'id' parameter is retrieved here
+     
+    });
+    this.store.select(selectUser).subscribe(data=>{
+     
+      this.user=data
     })
+    console.log("chapters")
+    this.store.select(selectLessons).subscribe(data=>{
+     
+      this.lessons=data
+    })
+    
 
   }
-  toggleCompletion(lessonId: string|null): void {
+  toggleCompletion(lessonId: number): void {
     const lesson = this.lessons.find((lesson) => lesson.id === lessonId);
+    console.log(lesson)
     if (lesson) {
-      lesson.completed = !lesson.completed;
+      this.store.dispatch(lessonActions.completeLesson({ userId:this.user.id , lessonId:lessonId , points:lesson.xpPoints }))
     }
+    // this.user.completedLessons.push(lessonId)
+   
   }
 
   // onCompleteLesson(userId: number, lessonId: number) {
@@ -58,7 +77,7 @@ export class ChaptersComponent implements OnInit{
   // }
 
 
-  selectLesson(lessonId: string): void {
+  selectLesson(lessonId: number): void {
     this.selectedLessonId = lessonId;
   }
 

@@ -30,8 +30,8 @@ opacity: 0.6;"> >
         <!-- Lessons Dropdown -->
         <div *ngIf="selectedCourseId === course.id" class="mt-4 bg-gray-100 p-4 rounded-lg transition-all duration-500 ease-in-out">
           <ul>
-            <li *ngFor="let lesson of getChaptersForCourse(course.id)" class="py-2 ">
-              <p class="text-lg text-gray-700 bg-green-300 px-3 py-2 border rounded-lg" (click)="navigateChapterpage(lesson.id)">{{ lesson.name }}</p>
+            <li *ngFor="let chapter of getChaptersForCourse(course.id)" class="py-2 ">
+              <p class="text-lg text-gray-700 bg-green-300 px-3 py-2 border rounded-lg" (click)="navigateChapterpage(chapter.id)">{{ chapter.name }}</p>
             </li>
           </ul>
         </div>
