@@ -75,14 +75,14 @@ user:User ={
   // }
   toggleCourse(courseId: number): void {
     if (this.selectedCourseId === courseId) {
-      this.selectedCourseId = null; // Close the course if already selected
+      this.selectedCourseId = null; 
     } else {
-      this.selectedCourseId = courseId; // Open the clicked course
+      this.selectedCourseId = courseId; 
     }
   }
   navigateChapterpage(id:string){
     this.store.dispatch(lessonActions.fetchLessons({chapterId:+id }))
-    this.store.dispatch(lastViewedChapterActions.updateLastViewedChapter({userId:this.user.id , lastViewedChapterId:+id }))
+    // this.store.dispatch(lastViewedChapterActions.updateLastViewedChapter({userId:this.user.id , lastViewedChapterId:+id }))
     this.router.navigate([`courses/:${id}/chapters`])
   }
   

@@ -1,16 +1,4 @@
-<!-- 
-<div *ngFor="let course of courses$ | async">
-    <div>
-      <h3>{{ course.name }}</h3>
-      <p>{{ course.description }}</p>
-      <div *ngFor="let chapterId of course.chapters"> -->
-        <!-- <div>{{ getChapterName(chapterId) }}</div> 
-         -->
-      <!-- </div>
-      <button (click)="onSelectCourse(course.id)">Go to Course</button>
-    </div>
-  </div> -->
-  
+
 <div class="relative min-h-screen flex items-center justify-center bg-cover bg-center" style="background-image: url('https://img.freepik.com/premium-vector/children-reading-book-different-posing-with-big-book-garden_33070-4216.jpg?semt=ais_hybrid');
 background-size: cover;
 background-position: center;
@@ -21,13 +9,12 @@ opacity: 0.6;"> >
   <div style="opacity: 1;z-index: 100;" class=" container mt-5 mx-auto p-6  min-h-[400px]">
     <h1 class="text-3xl font-bold text-center text-white  mb-8">Our Courses</h1>
   
-    <!-- Courses Container -->
     <div class="flex space-x-6 justify-center">
       <div *ngFor="let course of courses" class="flex flex-col text-white rounded-lg border p-4 cursor-pointer hover:bg-blue-600 transition duration-300 ease-in-out h-full"
         (click)="toggleCourse(course.id)">
         <h2 class="text-xl font-semibold text-center">{{ course.name }}</h2>
   
-        <!-- Lessons Dropdown -->
+    
         <div *ngIf="selectedCourseId === course.id" class="mt-4 bg-gray-100 p-4 rounded-lg transition-all duration-500 ease-in-out">
           <ul>
             <li *ngFor="let chapter of getChaptersForCourse(course.id)" class="py-2 ">

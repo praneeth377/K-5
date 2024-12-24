@@ -47,7 +47,7 @@ user:User={
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      this.selectedChapterId = +params.get('courseId')!; // The 'id' parameter is retrieved here
+      this.selectedChapterId = +params.get('courseId')!; 
      
     });
     this.store.select(selectUser).subscribe(data=>{
@@ -83,7 +83,6 @@ user:User={
 
 
 
-  // Get the content of the selected lesson
   getSelectedLesson(){
     return this.lessons.find(lesson => lesson.id === this.selectedLessonId);
   }
