@@ -6,6 +6,7 @@ import { CoursesComponent } from '../courses/courses.component';
 import { Router, RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { userSelector } from '../store/selectors/login.selector';
+import { chapterSelector } from '../store/selectors/chapter.selector';
 
 @Component({
   selector: 'app-landing-page',
@@ -19,6 +20,11 @@ export class LandingPageComponent implements OnInit{
   points!: any;
   avatars!: any;
   isSidenavOpen = false;
+  lastViewedChapter!: any;
+  chapterId!: any;
+  chapterList!: any;
+  courseIdList!: any;
+  courseId!: any;
   //userName$ = Observable<any>;
 
   constructor(private router:Router, private store: Store){
@@ -45,4 +51,25 @@ export class LandingPageComponent implements OnInit{
   closeNav() {
     this.isSidenavOpen = false;
   }
+
+  onClick() {
+    this.store.select(userSelector).subscribe((authState) => {
+      console.log(authState);
+      this.lastViewedChapter = authState.user.lastViewedChapterId;
+    
+  });
+  this.store.select(chapterSelector).subscribe((chapterState)=> {
+    console.log(chapterState);
+    this.chapterList = chapterState;
+    console.log(this.chapterList)
+  });
+
+  this.courseIdList = this.chapterList.filter((lists:any) => this.lastViewedChapter === lists.id)
+  console.log(this.courseIdList[0].id);
+  this.courseId = this.courseIdList[0].id
+  this.router.navigate([`/courses/:${this.courseId}/chapters`]);
+  
+  
+  
+}
 }
