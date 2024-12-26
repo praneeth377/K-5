@@ -18,6 +18,7 @@ export const authReducer = createReducer(
   initialState,
   on(authActions.loginSuccess, (state, { user }) => ({ ...state, user, error: null })),
   on(authActions.loginFailure, (state, { error }) => ({ ...state, user: null, error })),
+  on(authActions.logout, () => initialState),
   on(lastViewedChapterActions.updateLastViewedChapterSuccess, (state, { lastViewedChapterId }) => ({
     ...state,
     user: state.user
