@@ -7,12 +7,13 @@ import { Store } from '@ngrx/store';
 
 import { CoursesComponent } from '../courses/courses.component';
 import { chapterSelector } from '../store/selectors/chapter.selector';
+import { authActions } from '../store/actions/login.action';
 import { userSelector } from '../store/selectors/login.selector';
 
 @Component({
   selector: 'app-landing-page',
   standalone: true,
-  imports: [CommonModule, MatButtonModule, CoursesComponent, RouterLink],
+  imports: [CommonModule, MatButtonModule, CoursesComponent, RouterLink, MatExpansionModule],
   templateUrl: './landing_page.component.html',
   styleUrl: './landing_page.component.css',
 })
@@ -73,4 +74,11 @@ export class LandingPageComponent implements OnInit{
 
 
 }
+logOut() {
+  console.log('hi')
+  this.store.dispatch(authActions.logout());
+  this.router.navigate(['/'])
+}
+
+
 }
