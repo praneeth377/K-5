@@ -1,14 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import {MatButtonModule} from '@angular/material/button';
-import { CoursesComponent } from '../courses/courses.component';
+import { MatButtonModule } from '@angular/material/button';
 import { Router, RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { userSelector } from '../store/selectors/login.selector';
+
+import { CoursesComponent } from '../courses/courses.component';
 import { chapterSelector } from '../store/selectors/chapter.selector';
-import {MatExpansionModule} from '@angular/material/expansion';
 import { authActions } from '../store/actions/login.action';
+import { userSelector } from '../store/selectors/login.selector';
 
 @Component({
   selector: 'app-landing-page',
@@ -34,17 +34,17 @@ export class LandingPageComponent implements OnInit{
 
   ngOnInit(): void {
     this.store.select(userSelector).subscribe((authState) => {
-      console.log(authState);
+      // console.log(authState);
       this.userName = authState.user.name;
       this.points = authState.user.totalPoints;
       this.avatars = authState.user.avatar;
-      console.log(this.avatars);
-          
+      // console.log(this.avatars);
+
         });
         //this.userName$ = this.userName;
   }
-  
-  
+
+
 
   openNav() {
     this.isSidenavOpen = true;
@@ -56,23 +56,23 @@ export class LandingPageComponent implements OnInit{
 
   onClick() {
     this.store.select(userSelector).subscribe((authState) => {
-      console.log(authState);
+      // console.log(authState);
       this.lastViewedChapter = authState.user.lastViewedChapterId;
-    
+
   });
   this.store.select(chapterSelector).subscribe((chapterState)=> {
-    console.log(chapterState);
+    // console.log(chapterState);
     this.chapterList = chapterState;
-    console.log(this.chapterList)
+    // console.log(this.chapterList)
   });
 
   this.courseIdList = this.chapterList.filter((lists:any) => this.lastViewedChapter === lists.id)
-  console.log(this.courseIdList[0].id);
+  // console.log(this.courseIdList[0].id);
   this.courseId = this.courseIdList[0].id
   this.router.navigate([`/courses/:${this.courseId}/chapters`]);
-  
-  
-  
+
+
+
 }
 logOut() {
   console.log('hi')

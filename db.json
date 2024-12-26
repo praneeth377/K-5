@@ -1,13 +1,16 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "name": "John Doe",
       "email": "john.doe@example.com",
       "password": "1234",
       "avatar": "https://static.vecteezy.com/system/resources/previews/014/388/556/non_2x/avatar-portrait-of-a-kid-child-caucasian-boy-in-round-blue-frame-illustration-in-cartoon-flat-style-vector.jpg",
-      "totalPoints": 4,
-      "completedLessons": [101, 103],
+      "totalPoints": 5,
+      "completedLessons": [
+        101,
+        102
+      ],
       "lastViewedChapterId": 1,
       "progress": {
         "courseId": 1,
@@ -15,14 +18,14 @@
       }
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Jane Smith",
       "email": "jane.smith@example.com",
       "password": "1234",
       "avatar": "https://www.icon0.com/free/static2/preview2/stock-photo-little-girl-faces-children-avatar-people-icon-character-cartoon-32465.jpg",
       "totalPoints": 0,
       "completedLessons": [],
-      "lastViewedChapterId": 3,
+      "lastViewedChapterId": 0,
       "progress": {
         "courseId": 1,
         "percentage": 0
@@ -31,51 +34,69 @@
   ],
   "courses": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Mathematics",
       "description": "A course on basic and advanced mathematics.",
-      "chapters": [1, 2]
+      "chapters": [
+        1,
+        2
+      ]
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Physics",
       "description": "Learn the basics of classical and modern physics.",
-      "chapters": [3, 4]
+      "chapters": [
+        3,
+        4
+      ]
     }
   ],
   "chapters": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Algebra",
       "description": "Learn the fundamentals of algebra.",
       "courseId": 1,
-      "lessons": [101, 102]
+      "lessons": [
+        101,
+        102
+      ]
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Trigonometry",
       "description": "Dive into the world of trigonometric equations.",
       "courseId": 1,
-      "lessons": [103, 104]
+      "lessons": [
+        103,
+        104
+      ]
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Mechanics",
       "description": "Understand the laws of motion and forces.",
       "courseId": 2,
-      "lessons": [201, 202]
+      "lessons": [
+        201,
+        202
+      ]
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Thermodynamics",
       "description": "Explore heat and energy transfer.",
       "courseId": 2,
-      "lessons": [203, 204]
+      "lessons": [
+        203,
+        204
+      ]
     }
   ],
   "lessons": [
     {
-      "id": 101,
+      "id": "101",
       "name": "Basics of Algebra",
       "description": "Introduction to algebra.",
       "xpPoints": 2,
@@ -83,7 +104,7 @@
       "chapterId": 1
     },
     {
-      "id": 102,
+      "id": "102",
       "name": "Advanced Algebra",
       "description": "Learn about quadratic equations and beyond.",
       "xpPoints": 3,
@@ -91,7 +112,7 @@
       "chapterId": 1
     },
     {
-      "id": 103,
+      "id": "103",
       "name": "Basics of Trigonometry",
       "description": "Understanding sine, cosine, and tangent.",
       "xpPoints": 2,
@@ -99,7 +120,7 @@
       "chapterId": 2
     },
     {
-      "id": 104,
+      "id": "104",
       "name": "Trigonometric Equations",
       "description": "Solving equations involving trigonometric functions.",
       "xpPoints": 4,
@@ -107,7 +128,7 @@
       "chapterId": 2
     },
     {
-      "id": 201,
+      "id": "201",
       "name": "Newton's Laws",
       "description": "An overview of Newton's laws of motion.",
       "xpPoints": 3,
@@ -115,7 +136,7 @@
       "chapterId": 3
     },
     {
-      "id": 202,
+      "id": "202",
       "name": "Friction and Dynamics",
       "description": "Study the effects of friction in motion.",
       "xpPoints": 4,
@@ -123,7 +144,7 @@
       "chapterId": 3
     },
     {
-      "id": 203,
+      "id": "203",
       "name": "Heat Transfer",
       "description": "Learn the basics of heat transfer mechanisms.",
       "xpPoints": 3,
@@ -131,7 +152,7 @@
       "chapterId": 4
     },
     {
-      "id": 204,
+      "id": "204",
       "name": "Laws of Thermodynamics",
       "description": "Explore the laws governing thermodynamics.",
       "xpPoints": 4,
