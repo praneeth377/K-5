@@ -1,19 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+// import { MatExpansionModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material/button';
 import { Router, RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
 
 import { CoursesComponent } from '../courses/courses.component';
-import { chapterSelector } from '../store/selectors/chapter.selector';
 import { authActions } from '../store/actions/login.action';
+import { chapterSelector } from '../store/selectors/chapter.selector';
 import { userSelector } from '../store/selectors/login.selector';
 
 @Component({
   selector: 'app-landing-page',
   standalone: true,
-  imports: [CommonModule, MatButtonModule, CoursesComponent, RouterLink, MatExpansionModule],
+  imports: [CommonModule, MatButtonModule, CoursesComponent, RouterLink],
   templateUrl: './landing_page.component.html',
   styleUrl: './landing_page.component.css',
 })
